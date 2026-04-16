@@ -1,49 +1,97 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand colors */
-  --sv-cyan: #0a9db4;
-  --sv-cyan-hover: #0889a0;
+  /* Brand colors (DESIGN.md) */
   --sv-coral: #f25d5d;
   --sv-coral-hover: #e04d4d;
+  --sv-orange: #fc4c02;
+  --sv-dark-blue: #010120;
+  --sv-lavender: #bdbbff;
 
-  /* Backgrounds */
+  /* Surfaces & backgrounds */
   --sv-bg: #ffffff;
-  --sv-bg-alt: #f8fafc;
-  --sv-bg-tertiary: #f1f5f9;
+  --sv-bg-dark: #010120;
+  --sv-glass-light: rgba(255, 255, 255, 0.12);
+  --sv-glass-dark: rgba(0, 0, 0, 0.08);
 
   /* Text */
-  --sv-text-heading: #0f172a;
-  --sv-text-body: #475569;
-  --sv-text-muted: #94a3b8;
+  --sv-text-primary: #000000;
+  --sv-text-primary-dark: #ffffff;
+  --sv-text-muted: #00000066;
+  --sv-text-muted-dark: rgba(255, 255, 255, 0.5);
 
-  /* Fonts */
-  --font-heading: var(--font-literata), Georgia, serif;
-  --font-body: var(--font-outfit), system-ui, sans-serif;
+  /* Borders */
+  --sv-border-light: rgba(0, 0, 0, 0.08);
+  --sv-border-dark: rgba(255, 255, 255, 0.12);
+
+  /* Elevation */
+  --sv-shadow: rgba(1, 1, 32, 0.1) 0px 4px 10px;
+
+  /* Fonts — "The Future" and "PP Neue Montreal Mono" are proprietary;
+     we use system-ui and Space Mono as fallbacks per DESIGN.md */
+  --font-primary: var(--font-space-grotesk), system-ui, Arial, sans-serif;
+  --font-mono: var(--font-space-mono), "Space Mono", Georgia, monospace;
+
+  /* Radii */
+  --sv-radius-sm: 4px;
+  --sv-radius-md: 8px;
 }
 
 @theme inline {
-  --color-sv-cyan: var(--sv-cyan);
-  --color-sv-cyan-hover: var(--sv-cyan-hover);
+  /* Colors */
   --color-sv-coral: var(--sv-coral);
   --color-sv-coral-hover: var(--sv-coral-hover);
+  --color-sv-orange: var(--sv-orange);
+  --color-sv-dark-blue: var(--sv-dark-blue);
+  --color-sv-lavender: var(--sv-lavender);
   --color-sv-bg: var(--sv-bg);
-  --color-sv-bg-alt: var(--sv-bg-alt);
-  --color-sv-bg-tertiary: var(--sv-bg-tertiary);
-  --color-sv-heading: var(--sv-text-heading);
-  --color-sv-body: var(--sv-text-body);
-  --color-sv-muted: var(--sv-text-muted);
-  --font-sans: var(--font-body);
-  --font-serif: var(--font-heading);
+  --color-sv-bg-dark: var(--sv-bg-dark);
+  --color-sv-text: var(--sv-text-primary);
+  --color-sv-text-muted: var(--sv-text-muted);
+
+  /* Fonts */
+  --font-sans: var(--font-primary);
+  --font-mono: var(--font-mono);
 }
 
 body {
   background: var(--sv-bg);
-  color: var(--sv-text-body);
-  font-family: var(--font-body);
+  color: var(--sv-text-primary);
+  font-family: var(--font-primary);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  color: var(--sv-text-heading);
+  font-family: var(--font-primary);
+  color: var(--sv-text-primary);
+}
+
+/* Hover utilities */
+.sv-card-hover {
+  transition: box-shadow 300ms ease-out, transform 300ms ease-out;
+}
+.sv-card-hover:hover {
+  box-shadow: rgba(1, 1, 32, 0.1) 0px 4px 10px;
+  transform: translateY(-2px);
+}
+
+.sv-btn-hover {
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+.sv-btn-hover:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.sv-link-hover {
+  transition: color 300ms ease-out;
+}
+.sv-link-hover:hover {
+  color: var(--sv-text-primary) !important;
+}
+
+.sv-link-hover-dark {
+  transition: color 300ms ease-out;
+}
+.sv-link-hover-dark:hover {
+  color: #ffffff !important;
 }
