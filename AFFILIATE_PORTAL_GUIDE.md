@@ -21,36 +21,57 @@
 
 ## 2. Design System
 
+> All design decisions are defined in `DESIGN.md` (source of truth) and visually demonstrated at `/design-system`.
+
 ### Colors
 
-| Role | Hex | Usage |
-|------|-----|-------|
-| Primary (Cyan) | `#0a9db4` | CTAs, links, accents |
-| Primary hover | `#0889a0` | Hover states for primary |
-| Accent (Coral) | `#f25d5d` | Highlights, badges, secondary accents |
-| Accent hover | `#e04d4d` | Hover states for accent |
-| Background | `#ffffff` | Default page background |
-| Background alt | `#f8fafc` (Slate 50) | Alternating sections |
-| Background tertiary | `#f1f5f9` (Slate 100) | Cards, calculator background |
-| Text heading | `#0f172a` (Slate 900) | Headings |
-| Text body | `#475569` (Slate 600) | Body text |
-| Text muted | `#94a3b8` (Slate 400) | Captions, footnotes |
+| Role | Value | Usage |
+|------|-------|-------|
+| Brand Coral | `#f25d5d` (hover: `#e04d4d`) | Gradient illustrations, highest-signal brand moments — never UI chrome |
+| Brand Orange | `#fc4c02` | Gradient endpoints, warm accent moments |
+| Dark Blue | `#010120` | Dark surfaces, footer, CTA buttons on light |
+| Soft Lavender | `#bdbbff` | Subtle accents, secondary indicators |
+| Background (light) | `#ffffff` | Primary page background |
+| Background (dark) | `#010120` | Research, footer, technical sections |
+| Glass Light | `rgba(255,255,255,0.12)` | Frosted glass on dark surfaces |
+| Glass Dark | `rgba(0,0,0,0.08)` | Subtle tinted surfaces on light |
+| Text (light) | `#000000` | Primary text on light surfaces |
+| Text (dark) | `#ffffff` | Primary text on dark surfaces |
+| Text muted (light) | `#00000066` | Secondary text, captions on light |
+| Border (light) | `rgba(0,0,0,0.08)` | Borders on light surfaces |
+| Border (dark) | `rgba(255,255,255,0.12)` | Borders on dark surfaces |
 
 ### Typography
 
-| Role | Font | Style |
-|------|------|-------|
-| Headings | Literata | Serif |
-| Body / UI | Outfit | Sans-serif |
+| Role | Font | Fallback |
+|------|------|----------|
+| Primary (display + body) | Space Grotesk | system-ui, Arial |
+| Mono labels | Space Mono | Georgia, monospace |
 
-Both loaded via `next/font/google`.
+Both loaded via `next/font/google`. These substitute for "The Future" and "PP Neue Montreal Mono" (proprietary fonts from DESIGN.md).
+
+Key rules from DESIGN.md:
+- Negative letter-spacing on all primary font text (-0.16px to -1.92px, scaled by size)
+- Mono labels always uppercase with positive letter-spacing
+- Weight range: 400 (regular) and 500 (medium) only — no bold
+- Tight line-heights (1.10–1.40) throughout
 
 ### Radii & Spacing
 
-- Buttons: `rounded-xl`
-- Cards: `rounded-2xl`
-- Badges: `rounded-full`
-- Section padding: `py-20 px-6` (mobile), `py-24 px-8` (desktop)
+- Buttons, badges, tags: `4px` (sharp)
+- Cards, containers: `8px`
+- No pills, no generous rounding
+- Base spacing unit: 8px
+- Section vertical spacing: 80–120px
+
+### Elevation
+
+| Level | Treatment |
+|-------|-----------|
+| Flat | No shadow, no border |
+| Contained | `1px solid rgba(0,0,0,0.08)` (light) or `rgba(255,255,255,0.12)` (dark) |
+| Elevated | `rgba(1,1,32,0.1) 0px 4px 10px` (dark-blue-tinted shadow) |
+| Dark Zone | Full `#010120` background |
 
 ### Animations
 
@@ -251,7 +272,7 @@ Checklist:
 ## 5. Shared Layout
 
 ### Header
-- SourceVerify logo wordmark ("Source" in coral, "Verify" in cyan)
+- SourceVerify logo wordmark ("Source" in coral, "Verify" in dark blue)
 - Nav links: Home, Resources
 - CTA button: "Become an Affiliate" → Tolt URL
 

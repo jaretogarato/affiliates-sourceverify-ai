@@ -1,23 +1,36 @@
 import type { Metadata } from "next";
-import { Literata, Outfit } from "next/font/google";
+import { Space_Grotesk, Space_Mono } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
-const literata = Literata({
-  variable: "--font-literata",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
   display: "swap",
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "SourceVerify Affiliate Program",
+  title: {
+    default: "SourceVerify Affiliate Program",
+    template: "%s — SourceVerify Affiliates",
+  },
   description:
     "Earn 25% recurring commission for 24 months by referring researchers to SourceVerify.",
+  openGraph: {
+    title: "SourceVerify Affiliate Program",
+    description:
+      "Earn 25% recurring commission for 24 months by referring researchers to SourceVerify.",
+    siteName: "SourceVerify Affiliates",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -28,9 +41,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${literata.variable} ${outfit.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${spaceMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
